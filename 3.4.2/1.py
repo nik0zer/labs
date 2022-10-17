@@ -27,7 +27,7 @@ x = np.array(T_list)
 y_list = []
 
 for i in range(len(t_list)):
-    y_list.append(1 / ((float)(t_list[i] ** 2 - t_0 ** 2)))
+    y_list.append(((float)(t_list[i] ** 2 - t_0 ** 2)))
 
 y = np.array(y_list)
 
@@ -53,7 +53,7 @@ print(-b/a)
 fig, ax = plt.subplots(figsize=(10,7), constrained_layout=True)
 
 plt.plot(x, y, 'rs')
-plt.plot(x_ful_aproc, y_fit, 'g')
+#plt.plot(x_ful_aproc, y_fit, 'g')
 
 plt.savefig("1.png")
 
