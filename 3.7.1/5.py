@@ -52,18 +52,24 @@ v = np.array(v)
 ht1 = list()
 ht2 = list()
 
+httrue = list()
+
 h = 1.5 * 10 ** -3
 a = 45 * 10 ** -3 /2
 s1 = 5.2 * 10 ** 7
 s2 = 3.96 * 10 ** 7
+st = 5 * 10 ** 7
 u0 = 4 * 3.14 * 10 ** -7
 for i in range(len(v)):
     ht1.append(1 / (math.sqrt(1 + 1 / 4 * ((a * h * s1 * u0 * v[i] *2 *3.14) ** 2))))
 for i in range(len(v)):
     ht2.append(1 / (math.sqrt(1 + 1 / 4 * ((a * h * s2 * u0 * v[i] *2 *3.14) ** 2))))
+for i in range(len(v)):
+    httrue.append(1 / (math.sqrt(1 + 1 / 4 * ((a * h * st * u0 * v[i] *2 *3.14) ** 2))))
 
 fig, ax = plt.subplots(figsize=(10,7), constrained_layout=True)
 plt.plot(v1, he, 'rs')
 plt.plot(v1, ht1, 'gs')
 plt.plot(v1, ht2, 'bs')
+plt.plot(v1, httrue, 'y-')
 plt.savefig("5.png")
