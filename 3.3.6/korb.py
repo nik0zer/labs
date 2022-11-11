@@ -37,7 +37,7 @@ y = np.array(r)
 x = np.array(b)
 x = x ** 2
 x = x / 1000
-y *= 10
+y *= 100
 
 
 x_aproc = x
