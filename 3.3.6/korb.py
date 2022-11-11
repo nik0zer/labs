@@ -3,47 +3,42 @@ import numpy as np
 from scipy.optimize import curve_fit 
 import math
 
+u = list()
+i = list()
+r = list()
+
+b = list()
+ib = list()
+
 def mapping(x, a, b): 
     return a * x + b 
 
-v0 = 2251.6
-
-e = list()
-v = list()
-
-e1 = list()
-v1 = list()
-
-fi = list()
-pi = list()
-
-with  open('data_3', 'r')  as  data:
+with  open('B(I)_data', 'r')  as  data:
     for line in data:
         list_line = list((map(float, line.split())))
-        v.append(list_line[0])
-        e.append(list_line[1])
+        b.append(list_line[0])
+        ib.append(list_line[1])
 
-with  open('data_4', 'r')  as  data:
+j = 1
+with  open('U(I)_cir', 'r')  as  data:
     for line in data:
         list_line = list((map(float, line.split())))
-        v.append(list_line[0])
-        e.append(list_line[1])
-        v1.append(list_line[0])
-        e1.append(list_line[1])
-        fi.append(list_line[2])
-        pi.append(list_line[3])
+        u.append(list_line[0])
+        i.append(list_line[1])
 
-x1 = list()
-y1 = list()
 
-for i in range(len(e)):
-    if v[i] >= v0 * 0.2:
-        break
-    x1.append(v[i] ** 2)
-    y1.append(1 / (e[i] ** 2))
 
-y = np.array(y1)
-x = np.array(x1)
+r.append(u[0] / 23.5)
+
+for j in range(1, len(u)):
+    r.append(u[j] / 23.5)
+
+y = np.array(r)
+x = np.array(b)
+x = x ** 2
+x = x / 1000
+y *= 10
+
 
 x_aproc = x
 y_aproc = y
@@ -58,7 +53,6 @@ length = len(x_aproc)
 for i in range(len(x_aproc)):
     sum += (y_fit[i] - y_aproc[i]) ** 2
 error_rate = math.sqrt(sum / (length + 1))
-print(error_rate)
 
 x_sr = 0
 y_sr = 0
@@ -97,17 +91,13 @@ print(error_rate_b)
 print(error_rate_a / a)
 print(error_rate_b / b)
 
-y_fit = np.append(y_fit, 0)
-x_aproc = np.append(x_aproc, -b/a)
 
-print(b)
 print(a)
-
+print(b)
 
 
 fig, ax = plt.subplots(figsize=(10,7), constrained_layout=True)
 
-plt.plot(x, y, 'rs')
-plt.plot(x_aproc, y_fit, 'g')
-
-plt.savefig("1.png")
+plt.plot(x, y, 'rs--')
+plt.plot(x_aproc, y_fit, 'g-')
+plt.savefig("korb.png")
