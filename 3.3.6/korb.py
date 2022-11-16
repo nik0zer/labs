@@ -27,7 +27,6 @@ with  open('U(I)_cir', 'r')  as  data:
         i.append(list_line[1])
 
 
-
 r.append(u[0] / 23.5)
 
 for j in range(1, len(u)):
