@@ -97,6 +97,6 @@ print(b)
 
 fig, ax = plt.subplots(figsize=(10,7), constrained_layout=True)
 
-plt.plot(x, y, 'rs--')
+plt.plot(x, y, 'ys--')
 plt.plot(x_aproc, y_fit, 'g-')
 plt.savefig("4.png")
