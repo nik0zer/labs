@@ -33,9 +33,15 @@ with  open('1.6A', 'r')  as  data:
         list_line = list(map(float, line.split()))
         I_16.append(list_line[0])
 
-y = np.array(I_13)
-x = np.array(U)
-x = x**(3/2)
+y = np.array(I_13[0:16])
+x = np.array(U[0:16])
+y1 = np.array(I_14[0:16])
+x1 = np.array(U[0:16])
+y2 = np.array(I_15[0:16])
+x2 = np.array(U[0:16])
+y3 = np.array(I_16[0:16])
+x3 = np.array(U[0:16])
+x = x
 y = y
 
 
@@ -99,6 +105,8 @@ print(b)
 fig, ax = plt.subplots(figsize=(10,7), constrained_layout=True)
 
 plt.plot(x, y, 'rs--')
-plt.plot(x_aproc, y_fit, 'g-')
-plt.savefig("1.png")
+plt.plot(x1, y1, 'gs--')
+plt.plot(x2, y2, 'bs--')
+plt.plot(x3, y3, 'ys--')
+plt.savefig("1_10.png")
 
