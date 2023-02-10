@@ -26,8 +26,8 @@ for i in range(len(z)):
     dzm_2 = (0.2 / z[i]) / 2 * zm_2 * 2
     dzm_2_list.append(dzm_2)
     print(str(int(num[i])) + " " + str(zm_2) + " " + str(dzm_2))
-    d1_list.append(d1)
-    d2_list.append(d2)
+    d1_list.append(d1 - 70)
+    d2_list.append(d2 - 70)
 
 
 fig, ax = plt.subplots(figsize=(10,7), constrained_layout=True)
